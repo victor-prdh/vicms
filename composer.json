@@ -1,0 +1,15 @@
+{
+    "name": "victor-prdh/vicms",
+    "autoload": {
+        "psr-4": {
+            "Vicms\\": "vicms/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Victor Prudhomme",
+            "email": "contact@victor-prdh.com"
+        }
+    ],
+    "require": {}
+}
