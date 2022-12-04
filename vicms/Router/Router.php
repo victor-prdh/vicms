@@ -130,8 +130,6 @@ class Router
 
 
         foreach ($this->getRoutes() as $route) {
-            var_dump($route);
-            echo '<hr>';
             $urlArray = explode("/", $route->getUrl());
             $urlLength = count($urlArray);
 

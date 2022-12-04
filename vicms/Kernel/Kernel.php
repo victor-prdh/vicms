@@ -16,10 +16,13 @@ class Kernel
 
     public function __construct()
     {
-        $baseDir = dirname(__DIR__, 2);
+        $baseDir = dirname(__DIR__, 2).'/';
 
-        self::$configFolderPath = $baseDir.'/config';
+        self::$configFolderPath = $baseDir.'config';
         self::$baseDir = $baseDir;
+
+        new Env($baseDir);
+    
         new Server(self::$configFolderPath);
     }
 
