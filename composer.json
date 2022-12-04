@@ -11,5 +11,7 @@
             "email": "contact@victor-prdh.com"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^3.4"
+    }
 }

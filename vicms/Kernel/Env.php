@@ -26,6 +26,12 @@ class Env
                 $_ENV[$envData[0]] = $envData[1];
             }
         }
+
+        if (!empty($_ENV['MODE']) && $_ENV['MODE'] === 'DEV') {
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
+            error_reporting(E_ALL);
+        }        
     }
 
     /**

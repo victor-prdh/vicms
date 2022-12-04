@@ -2,6 +2,10 @@
 
 namespace Vicms\Controller;
 
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+use Vicms\Kernel\Kernel;
+
 abstract class BaseController
 {
     private array $params = [];
@@ -41,9 +45,11 @@ abstract class BaseController
     /**
      * Render page to client
      */
-    public function render($template): void
+    public function render($template, $data = []): void
     {
-        header('Content-Type: text/html; charset=utf-8');
-        echo $template;
+        $twigLoader = new FilesystemLoader(Kernel::getBaseDir() . '/templates');
+        $twig = new Environment($twigLoader);
+
+        echo $twig->render($template, $data);
     }
 }

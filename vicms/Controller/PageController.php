@@ -9,17 +9,19 @@ class PageController extends BaseController
 
     public function Homepage()
     {
-        $this->render('<h1>Homepage</h1>');
+        $this->render('base.html.twig');
     }
 
     public function Page()
     {
         $currentPage = $this->getParam('page');
-        $this->render('<h1>Page: '. $currentPage .'</h1>');
+        $this->render('page.html.twig', [
+            'page' => $currentPage
+        ]);
     }
 
     public function Test()
     {
-        $this->render('YOOOOO');
+        $this->render('test.html.twig');
     }
 }
