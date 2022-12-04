@@ -9,3 +9,7 @@ homepage:
 page:
   path: /{page}
   controller: \Vicms\Controller\PageController::Page
+
+Nan:
+  path: /nan
+  controller: contact::contact

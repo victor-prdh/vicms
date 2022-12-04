@@ -3,10 +3,11 @@
 namespace Vicms\Controller;
 
 use Twig\Environment;
+use Twig\Error\LoaderError;
 use Twig\Loader\FilesystemLoader;
 use Vicms\Kernel\Kernel;
 
-abstract class BaseController
+class BaseController
 {
     private array $params = [];
 
@@ -51,5 +52,27 @@ abstract class BaseController
         $twig = new Environment($twigLoader);
 
         echo $twig->render($template, $data);
+    }
+
+    /**
+     * Render page to client
+     */
+    public function renderError($errorCode = '200', $message = 'Error'): void
+    {
+        $twigLoader = new FilesystemLoader(Kernel::getBaseDir() . '/templates');
+        $twig = new Environment($twigLoader);
+
+        try {
+            echo $twig->render('errors/'.$errorCode.'.html.twig', [
+                'errorCode' => $errorCode,
+                'message' => $message
+            ]);
+        } catch (LoaderError $th) {
+            echo $twig->render('errors/base.html.twig', [
+                'errorCode' => $errorCode,
+                'message' => $message
+            ]);
+        }
+        
     }
 }

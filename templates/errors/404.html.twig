@@ -1,0 +1,7 @@
+{% extends "errors/base.html.twig" %}
+
+{% block body %}
+        <h1 style="color: red;">ERROR {{ errorCode }}</h1>
+        <p>{{message}}</p>
+        <a href="/">Retour à l'accueil</a>
+{% endblock %}
