@@ -142,27 +142,33 @@ class Router
         foreach ($this->getRoutes() as $route) {
             $urlArray = explode("/", $route->getUrl());
             $urlLength = count($urlArray);
+            $matchingParams = 0;
 
             if ($currentUrlLength === $urlLength) {
                 $i = 0;
                 foreach ($urlArray as $value) {
+                    echo $value;
                     if (str_contains($value, "{")) {
                         $paramName = substr($value, 1, -1);
                         $_SERVER["params"][$paramName] =  $currentUrlArray[$i];
-                    } elseif ($value !== $currentUrlArray[$i]) {
-                        return new NotFoundException();
-                        return;
+                        $matchingParams++;
+                    } elseif ($value === $currentUrlArray[$i]) {
+                        $matchingParams++;
                     }
 
                     $i++;
                 }
-                $this->callController($route->getController());
-                return;
+                
             }
+
+            if ($matchingParams === $currentUrlLength) {
+                return $this->callController($route->getController());
+            }
+            
+            
         }
 
         return new NotFoundException();
-        return;
     }
 
     /**

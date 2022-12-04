@@ -1,3 +1,11 @@
 test:
   path: /test
   controller: \Vicms\Controller\PageController::Test
+
+homepage:
+  path: /
+  controller: \Vicms\Controller\PageController::Homepage
+
+page:
+  path: /{page}
+  controller: \Vicms\Controller\PageController::Page
