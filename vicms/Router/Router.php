@@ -92,6 +92,10 @@ class Router
 
             $infoRoute = explode(":", $value, 2);
 
+            if (empty($infoRoute) || count($infoRoute) !== 2) {
+                continue;
+            }
+
             if (isset($infoRoute[1])) {
                 $i++;
             }
@@ -126,6 +130,8 @@ class Router
 
 
         foreach ($this->getRoutes() as $route) {
+            var_dump($route);
+            echo '<hr>';
             $urlArray = explode("/", $route->getUrl());
             $urlLength = count($urlArray);
 
