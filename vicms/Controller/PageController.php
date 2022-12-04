@@ -14,9 +14,7 @@ class PageController extends BaseController
 
     public function Page()
     {
-        $params = $this->getParams();
-        $currentPage = $params['page'] ??= null;
-        var_dump($this->getParams());
+        $currentPage = $this->getParam('page');
         $this->render('<h1>Page: '. $currentPage .'</h1>');
     }
 
