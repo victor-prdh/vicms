@@ -10,23 +10,21 @@ class Kernel
     /**
      * Path for the config folder
      */
-    private string $configFolderPath;
+    private static string $configFolderPath;
 
-    public function __construct($configFolderPath)
+    private static string $baseDir;
+
+    public function __construct()
     {
-        $this->setConfigFolderPath($configFolderPath);
-        new Server($configFolderPath);
+        $baseDir = dirname(__DIR__, 2);
+
+        self::$configFolderPath = $baseDir.'/config';
+        self::$baseDir = $baseDir;
+        new Server(self::$configFolderPath);
     }
 
-    /**
-     * Set path for the config folder
-     *
-     * @return  self
-     */
-    public function setConfigFolderPath($configFolderPath)
+    public static function getBaseDir(): string
     {
-        $this->configFolderPath = $configFolderPath;
-
-        return $this;
+        return self::$baseDir;
     }
 }

@@ -9,4 +9,5 @@ use Vicms\Kernel\Kernel;
 
 require '../vendor/autoload.php';
 
-$kernel = new Kernel('../config');
+$kernel = new Kernel();
+
